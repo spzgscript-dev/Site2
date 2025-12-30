@@ -7,7 +7,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <style>
-        /* Reset and base */
         * { margin:0; padding:0; box-sizing:border-box; font-family: 'Orbitron', sans-serif; }
         body {
             min-height: 100vh;
@@ -38,7 +37,6 @@
             margin-bottom:10px;
         }
 
-        /* Search and filter */
         .controls {
             display:flex;
             justify-content: center;
@@ -57,7 +55,6 @@
             color:white;
         }
 
-        /* Embeds container */
         .embed-container {
             display:flex;
             flex-direction: column;
@@ -78,15 +75,6 @@
             display:flex;
             flex-direction: column;
             gap:10px;
-            position:relative;
-        }
-
-        .embed img {
-            width:50px;
-            height:50px;
-            position:absolute;
-            top:20px;
-            right:20px;
         }
 
         .embed h2 {
@@ -96,6 +84,13 @@
 
         .embed p {
             font-size:1rem;
+        }
+
+        .embed .download-title {
+            font-weight:bold;
+            font-size:1.1rem;
+            color:#ff9999;
+            margin-top:10px;
         }
 
         .links a {
@@ -120,9 +115,7 @@
             to { opacity:1; transform: translateY(0); }
         }
 
-        /* Responsive */
         @media(max-width: 650px){
-            .embed img { top:10px; right:10px; width:40px; height:40px; }
             .embed h2 { font-size:1.1rem; }
             .embed p { font-size:0.9rem; }
         }
@@ -142,44 +135,18 @@
         </select>
     </div>
 
-    <div class="embed-container" id="embedContainer">
-        <!-- Embeds will be inserted here dynamically -->
-    </div>
+    <div class="embed-container" id="embedContainer"></div>
 
     <script>
         const discordLink = "https://discord.gg/vmYp8AkTyz";
 
         const embeds = [
-            {
-                name: "Grand Theft Auto V Lite",
-                size: 22,
-                gofile: "https://store5.gofile.io/download/web/d30b8b36-3692-4dba-b566-48959277b81a/GTA%20V%20LIGHTER%20V10%20By%20OptiJuegos.7z"
-            },
-            {
-                name: "Grand Theft Auto V Lite V2",
-                size: 16,
-                gofile: "https://store10.gofile.io/download/web/a0137e27-3298-4386-82d0-5816af492924/GTA%20V%20LITE%2016%20GB%20SUPORT%20GAME%20HUB.rar"
-            },
-            {
-                name: "Grand Theft Auto V Lite V3",
-                size: 13,
-                gofile: "https://store-na-phx-4.gofile.io/download/web/7afc4660-601c-415c-a376-0228546b3cd6/GTA%20V%20RIP%20V1.2%20By%20OptiJuegos.7z"
-            },
-            {
-                name: "Grand Theft Auto V Lite v4",
-                size: 12,
-                gofile: "https://store5.gofile.io/download/web/33ac3a40-b351-437e-b68a-fea3bcd2b22a/GTA%20V%20RIP%20V1.41%20optijuegos.net.7z"
-            },
-            {
-                name: "Grand Theft Auto V Lite v5",
-                size: 10.9,
-                gofile: "https://gofile.io/d/eeoLh7"
-            },
-            {
-                name: "Grand Theft Auto IV Lite [MOST OPTIMIZED]",
-                size: 4,
-                gofile: "https://file-eu-par-4.gofile.io/download/web/71dc7894-bfa7-4a91-be7f-6067916f8e58/GTA%20IV%20RIP%20By%20OptiJuegos.7z"
-            }
+            {name: "Grand Theft Auto V Lite", size: 22, gofile: "https://store5.gofile.io/download/web/d30b8b36-3692-4dba-b566-48959277b81a/GTA%20V%20LIGHTER%20V10%20By%20OptiJuegos.7z"},
+            {name: "Grand Theft Auto V Lite V2", size: 16, gofile: "https://store10.gofile.io/download/web/a0137e27-3298-4386-82d0-5816af492924/GTA%20V%20LITE%2016%20GB%20SUPORT%20GAME%20HUB.rar"},
+            {name: "Grand Theft Auto V Lite V3", size: 13, gofile: "https://store-na-phx-4.gofile.io/download/web/7afc4660-601c-415c-a376-0228546b3cd6/GTA%20V%20RIP%20V1.2%20By%20OptiJuegos.7z"},
+            {name: "Grand Theft Auto V Lite v4", size: 12, gofile: "https://store5.gofile.io/download/web/33ac3a40-b351-437e-b68a-fea3bcd2b22a/GTA%20V%20RIP%20V1.41%20optijuegos.net.7z"},
+            {name: "Grand Theft Auto V Lite v5", size: 10.9, gofile: "https://gofile.io/d/eeoLh7"},
+            {name: "Grand Theft Auto IV Lite [MOST OPTIMIZED]", size: 4, gofile: "https://file-eu-par-4.gofile.io/download/web/71dc7894-bfa7-4a91-be7f-6067916f8e58/GTA%20IV%20RIP%20By%20OptiJuegos.7z"}
         ];
 
         const container = document.getElementById("embedContainer");
@@ -194,11 +161,11 @@
                 div.innerHTML = `
                     <h2>${embed.name}</h2>
                     <p>Size: ${embed.size} GB</p>
+                    <div class="download-title">Download Links:</div>
                     <div class="links">
                         <a href="${embed.gofile}" target="_blank">GoFile</a>
                         <a href="${discordLink}" target="_blank">Discord</a>
                     </div>
-                    <img src="https://img.icons8.com/color/48/000000/game-controller.png" alt="logo">
                 `;
                 container.appendChild(div);
             });
@@ -206,11 +173,8 @@
 
         function filterAndSort(){
             let filtered = embeds.filter(e => e.name.toLowerCase().includes(searchInput.value.toLowerCase()));
-            if(sortSelect.value === "big"){
-                filtered.sort((a,b)=>b.size-a.size);
-            } else {
-                filtered.sort((a,b)=>a.size-b.size);
-            }
+            if(sortSelect.value === "big"){ filtered.sort((a,b)=>b.size-a.size); }
+            else { filtered.sort((a,b)=>a.size-b.size); }
             displayEmbeds(filtered);
         }
 
