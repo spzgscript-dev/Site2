@@ -16,7 +16,7 @@ background:linear-gradient(135deg,#000,#ff0000,#000);
 background-size:400% 400%;
 animation:aurora 15s ease infinite;
 color:white;
-padding-bottom:40px;
+padding-bottom:80px;
 }
 
 @keyframes aurora{
@@ -30,14 +30,6 @@ text-align:center;
 padding:20px;
 font-size:2.5rem;
 text-shadow:0 0 15px red;
-}
-
-.warning{
-text-align:center;
-font-size:.8rem;
-color:#ff7777;
-margin-bottom:10px;
-padding:0 10px;
 }
 
 .tabs{
@@ -122,6 +114,19 @@ transform:scale(1.1);
 background:#ff4444;
 }
 
+.warning{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+text-align:center;
+padding:12px 10px;
+font-size:.85rem;
+background:rgba(0,0,0,.85);
+color:white;
+border-top:1px solid red;
+}
+
 @keyframes fadeUp{
 from{opacity:0;transform:translateY(30px)}
 to{opacity:1;transform:translateY(0)}
@@ -138,10 +143,6 @@ header{font-size:2rem}
 
 <header>CG|CH Downloads</header>
 
-<div class="warning">
-Every file we gave you are not made by me or pirated! They are just highly compressed for those who have low end devices!
-</div>
-
 <div class="tabs">
 <button class="tab-btn active" onclick="switchTab('games')">Games</button>
 <button class="tab-btn" onclick="switchTab('emulators')">Emulators</button>
@@ -157,12 +158,17 @@ Every file we gave you are not made by me or pirated! They are just highly compr
 
 <div class="embed-container" id="container"></div>
 
-<script>
-const discord = "https://discord.gg/vmYp8AkTyz";
-let currentTab = "games";
+<div class="warning">
+Every file shared here is NOT made by us and is NOT pirated.  
+These files are highly compressed/optimized versions intended for low-end devices.  
+Always scan files with antivirus software before installing.
+</div>
 
-const games = [
-{name:"Grand Theft Auto V Legacy",size:59,link:"https://148-251-90-39.top/Oceanofgames.com/Grand_Theft_Auto_V_GTA_5_RELOADED.zip?md5=UB74vX-lZBfb12U2MSsPeQ&expires=1769687446"},
+<script>
+const discord="https://discord.gg/vmYp8AkTyz";
+let currentTab="games";
+
+const games=[
 {name:"Grand Theft Auto V Lite",size:22,link:"https://store5.gofile.io/download/web/d30b8b36-3692-4dba-b566-48959277b81a/GTA%20V%20LIGHTER%20V10%20By%20OptiJuegos.7z"},
 {name:"Grand Theft Auto V Lite V2",size:16,link:"https://store10.gofile.io/download/web/a0137e27-3298-4386-82d0-5816af492924/GTA%20V%20LITE%2016%20GB%20SUPORT%20GAME%20HUB.rar"},
 {name:"Grand Theft Auto V Lite V3",size:13,link:"https://store-na-phx-4.gofile.io/download/web/7afc4660-601c-415c-a376-0228546b3cd6/GTA%20V%20RIP%20V1.2%20By%20OptiJuegos.7z"},
@@ -171,7 +177,7 @@ const games = [
 {name:"Grand Theft Auto IV Lite [MOST OPTIMIZED]",size:4,link:"https://file-eu-par-4.gofile.io/download/web/71dc7894-bfa7-4a91-be7f-6067916f8e58/GTA%20IV%20RIP%20By%20OptiJuegos.7z"}
 ];
 
-const emulators = [
+const emulators=[
 {name:"GameHub AnTuTu V5",size:0.047,link:"https://www.mediafire.com/file/nj2svlkqxjcredx/GameHub-Lite-5.1.0-AnTuTu.apk/file"}
 ];
 
@@ -208,7 +214,6 @@ render();
 
 search.oninput=render;
 sort.onchange=render;
-
 render();
 </script>
 
