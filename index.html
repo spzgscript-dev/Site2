@@ -12,11 +12,11 @@
 
 body{
 min-height:100vh;
-background:linear-gradient(135deg,#000,#ff0000,#000);
+background:linear-gradient(135deg,#000,#004cff,#000);
 background-size:400% 400%;
 animation:aurora 15s ease infinite;
 color:white;
-padding-bottom:80px;
+padding-bottom:40px;
 }
 
 @keyframes aurora{
@@ -29,7 +29,20 @@ header{
 text-align:center;
 padding:20px;
 font-size:2.5rem;
-text-shadow:0 0 15px red;
+text-shadow:0 0 20px #3fa9ff;
+}
+
+.warning{
+max-width:900px;
+margin:10px auto 20px auto;
+padding:12px 15px;
+font-size:.85rem;
+text-align:center;
+background:rgba(0,0,0,.75);
+border:1px solid #3fa9ff;
+border-radius:8px;
+box-shadow:0 0 15px rgba(63,169,255,.6);
+color:white;
 }
 
 .tabs{
@@ -42,16 +55,17 @@ margin:15px;
 .tab-btn{
 padding:10px 20px;
 border:none;
-background:#111;
+background:#0a0a0a;
 color:white;
 border-radius:6px;
 cursor:pointer;
-box-shadow:0 0 10px red;
+box-shadow:0 0 12px #3fa9ff;
 transition:.3s;
 }
 
 .tab-btn.active{
-background:red;
+background:#3fa9ff;
+color:black;
 }
 
 .controls{
@@ -66,9 +80,9 @@ margin:20px;
 padding:10px 15px;
 border:none;
 border-radius:6px;
-background:rgba(0,0,0,.7);
+background:rgba(0,0,0,.75);
 color:white;
-box-shadow:0 0 10px red;
+box-shadow:0 0 12px #3fa9ff;
 }
 
 .embed-container{
@@ -80,8 +94,8 @@ padding:0 10px;
 }
 
 .embed{
-background:rgba(20,20,20,.85);
-border:2px solid red;
+background:rgba(15,15,25,.85);
+border:2px solid #3fa9ff;
 border-radius:10px;
 padding:20px;
 width:100%;
@@ -89,21 +103,25 @@ max-width:620px;
 animation:fadeUp .8s ease forwards;
 }
 
-.embed h2{color:#ff5555;font-size:1.3rem}
+.embed h2{
+color:#6bbcff;
+font-size:1.3rem;
+}
+
 .embed p{margin-top:5px}
 
 .download-title{
 margin-top:10px;
 font-weight:bold;
-color:#ffaaaa;
+color:#9fd4ff;
 }
 
 .links a{
 display:inline-block;
 margin:8px 8px 0 0;
 padding:6px 14px;
-background:red;
-color:white;
+background:#3fa9ff;
+color:black;
 border-radius:6px;
 text-decoration:none;
 transition:.3s;
@@ -111,20 +129,7 @@ transition:.3s;
 
 .links a:hover{
 transform:scale(1.1);
-background:#ff4444;
-}
-
-.warning{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-text-align:center;
-padding:12px 10px;
-font-size:.85rem;
-background:rgba(0,0,0,.85);
-color:white;
-border-top:1px solid red;
+background:#6bbcff;
 }
 
 @keyframes fadeUp{
@@ -143,6 +148,12 @@ header{font-size:2rem}
 
 <header>CG|CH Downloads</header>
 
+<div class="warning">
+Every file shared here is NOT made by us and is NOT pirated.  
+These files are highly compressed / optimized versions intended for low-end devices.  
+Always scan files with antivirus software before installing.
+</div>
+
 <div class="tabs">
 <button class="tab-btn active" onclick="switchTab('games')">Games</button>
 <button class="tab-btn" onclick="switchTab('emulators')">Emulators</button>
@@ -157,12 +168,6 @@ header{font-size:2rem}
 </div>
 
 <div class="embed-container" id="container"></div>
-
-<div class="warning">
-Every file shared here is NOT made by us and is NOT pirated.  
-These files are highly compressed/optimized versions intended for low-end devices.  
-Always scan files with antivirus software before installing.
-</div>
 
 <script>
 const discord="https://discord.gg/vmYp8AkTyz";
